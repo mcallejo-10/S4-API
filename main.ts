@@ -1,38 +1,73 @@
-let jokeDiv = document.getElementById('joke') as HTMLElement;
-const searchJoke = document.getElementById("search");
 
-const arrayJokes: { 
-    id: string;
+var jokeDiv = document.getElementById('joke') as HTMLElement;
+
+var currentJoke: string = '';
+var currentScore: (number | boolean) = false;
+var currentObjectJoke: {
     joke: string;
-    status: number;
+    score: number | boolean;
+    date: string;
+}
+
+const reportAcudits: {
+    joke: string;
+    score: number | boolean;
+    date: string;
 }[] = [];
 
-async function importJoke() {
+
+
+async function importNewJoke() {
     const url = 'https://icanhazdadjoke.com/';
     const options = {
         method: 'GET',
         headers: {
-            'Accept': 'application/json',            
+            'Accept': 'application/json',
         }
     };
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result);
-        arrayJokes.push(result);
+        currentJoke = result.joke;
     } catch (error) {
         console.error(error);
     }
-    printJoke();
+    currentScore = false;
+    printJoke(currentJoke);
 }
 
-function printJoke() {
-    const currentJoke = arrayJokes[arrayJokes.length -1];
-    jokeDiv.innerHTML =`${currentJoke.joke}`;
-    console.log(arrayJokes);
+function saveScoredJoke(scoreJoke: string) {
+    const currentDate = new Date();
+    const isoDate = currentDate.toISOString();
+
+    currentScore = parseInt(scoreJoke);
+    currentObjectJoke = {
+        joke: currentJoke,
+        score: currentScore,
+        date: isoDate
+    }
 }
 
 function nextJoke() {
-    importJoke();
+    if (currentScore == false) {
+        const currentDate = new Date();
+        const isoDate = currentDate.toISOString();
+        currentObjectJoke = {
+            joke: currentJoke,
+            score: currentScore,
+            date: isoDate
+        }
+    }
+    reportAcudits.push(currentObjectJoke);
+    console.log(reportAcudits);
+    importNewJoke()
+
 }
-importJoke();
+
+
+function printJoke(currentJoke: string) {
+    jokeDiv.innerHTML = `${currentJoke}`;
+    //console.log(reportAcudits);
+}
+
+importNewJoke();

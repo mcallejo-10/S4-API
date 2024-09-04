@@ -8,10 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-let jokeDiv = document.getElementById('joke');
-const searchJoke = document.getElementById("search");
-const arrayJokes = [];
-function importJoke() {
+var jokeDiv = document.getElementById('joke');
+var currentJoke = '';
+var currentScore = false;
+var currentObjectJoke;
+const reportAcudits = [];
+function importNewJoke() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = 'https://icanhazdadjoke.com/';
         const options = {
@@ -23,21 +25,41 @@ function importJoke() {
         try {
             const response = yield fetch(url, options);
             const result = yield response.json();
-            console.log(result);
-            arrayJokes.push(result);
+            currentJoke = result.joke;
         }
         catch (error) {
             console.error(error);
         }
-        printJoke();
+        currentScore = false;
+        printJoke(currentJoke);
     });
 }
-function printJoke() {
-    const currentJoke = arrayJokes[arrayJokes.length - 1];
-    jokeDiv.innerHTML = `${currentJoke.joke}`;
-    console.log(arrayJokes);
+function saveScoredJoke(scoreJoke) {
+    const currentDate = new Date();
+    const isoDate = currentDate.toISOString();
+    currentScore = parseInt(scoreJoke);
+    currentObjectJoke = {
+        joke: currentJoke,
+        score: currentScore,
+        date: isoDate
+    };
 }
 function nextJoke() {
-    importJoke();
+    if (currentScore == false) {
+        const currentDate = new Date();
+        const isoDate = currentDate.toISOString();
+        currentObjectJoke = {
+            joke: currentJoke,
+            score: currentScore,
+            date: isoDate
+        };
+    }
+    reportAcudits.push(currentObjectJoke);
+    console.log(reportAcudits);
+    importNewJoke();
 }
-importJoke();
+function printJoke(currentJoke) {
+    jokeDiv.innerHTML = `${currentJoke}`;
+    //console.log(reportAcudits);
+}
+importNewJoke();
