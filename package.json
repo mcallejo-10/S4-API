@@ -2,7 +2,7 @@
   "name": "s4-api",
   "version": "1.0.0",
   "description": "Creación de una web de chistes consumiendo los datos de una API gratuita",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,6 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "sass": "^1.78.0"
-  }
+  },  
+  "apiKey": "Yr8iuFFH0o3xKYjrmkYCYaunCVBdp7k5nIuNiITj"
 }

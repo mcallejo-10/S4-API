@@ -21,8 +21,15 @@
 <body data-bs-theme="light">
   <div class="container">
 
-    <nav class="m-2">
-      <h6 class="justify-top">el temps</h6>
+    <nav class="nav-bar">
+      <div class="d-flex flex-row justify-content-start align-items-center mb-3">
+
+        <div class="mw-10" id="weather">
+          
+        </div>
+        <h5  id="temperature"></h5>
+      </div>
+     
     </nav>
     <section class="row justify-content-center text-center p-5 mt-4">
       <div class="card col">
@@ -41,6 +48,8 @@
         </div>
       </div>
     </section>
+  <script src="data.js"></script>
+  <script src="utils.js"></script>
   <script src="main.js"></script>
   <!-- <script>import "bootswatch/dist/sketchy/bootstrap.min.css"</script> -->
 
