@@ -39,6 +39,17 @@ async function importNewJoke() {
     currentScore = false;
     printJoke(currentJoke);
 }
+async function importNewChuckJoke() {
+    try {
+        const response = await fetch("https://api.chucknorris.io/jokes/random");
+        const result = await response.json();
+        currentJoke = result.value;
+    } catch (error) {
+        console.error(error);
+    }
+    currentScore = false;
+    printJoke(currentJoke);
+}
 
 function saveScoredJoke(scoreJoke: string) {
     const currentDate = new Date();
@@ -64,7 +75,11 @@ function nextJoke() {
     }
     reportAcudits.push(currentObjectJoke);
     console.log(reportAcudits);
-    importNewJoke();
+    if(reportAcudits.length % 2 != 0){
+        importNewChuckJoke();
+    } else {
+        importNewJoke();
+    }
 }
 
 function printJoke(currentJoke: string) {
@@ -119,7 +134,7 @@ async function getWheatherInfo() {
     const options = {
         method: "GET",
         headers: {
-            "X-Api-Key": "Yr8iuFFH0o3xKYjrmkYCYaunCVBdp7k5nIuNiITj",
+            "X-Api-Key": apiKey,
         },
     };
     try {

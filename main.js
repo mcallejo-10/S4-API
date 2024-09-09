@@ -36,6 +36,20 @@ function importNewJoke() {
         printJoke(currentJoke);
     });
 }
+function importNewChuckJoke() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = yield fetch("https://api.chucknorris.io/jokes/random");
+            const result = yield response.json();
+            currentJoke = result.value;
+        }
+        catch (error) {
+            console.error(error);
+        }
+        currentScore = false;
+        printJoke(currentJoke);
+    });
+}
 function saveScoredJoke(scoreJoke) {
     const currentDate = new Date();
     const isoDate = currentDate.toISOString();
@@ -58,7 +72,12 @@ function nextJoke() {
     }
     reportAcudits.push(currentObjectJoke);
     console.log(reportAcudits);
-    importNewJoke();
+    if (reportAcudits.length % 2 != 0) {
+        importNewChuckJoke();
+    }
+    else {
+        importNewJoke();
+    }
 }
 function printJoke(currentJoke) {
     jokeDiv.innerHTML = `${currentJoke}`;
@@ -109,7 +128,7 @@ function getWheatherInfo() {
         const options = {
             method: "GET",
             headers: {
-                "X-Api-Key": "Yr8iuFFH0o3xKYjrmkYCYaunCVBdp7k5nIuNiITj",
+                "X-Api-Key": "Yr8iuFFH0o3xKYjrmkYCYaunCVBdp7k5nIuNiIT",
             },
         };
         try {

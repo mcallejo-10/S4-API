@@ -217,3 +217,5 @@ const estatDelCel: {
             icona_nit: "http://static-m.meteo.cat/assets-w3/images/meteors/estatcel/32n.svg"
         }
     ]
+    
+
