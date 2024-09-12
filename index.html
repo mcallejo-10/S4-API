@@ -10,52 +10,46 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-
   <!-- Custom Css  -->
-  <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
-  <link rel="stylesheet" href="./css/bootstrap.css" />
-
-
+  <link rel="stylesheet" href="styles/css/styles.css" />
 </head>
 
 <body data-bs-theme="light">
+  <div class="blob1" id="blob"></div>
   <div class="container">
-
-    <nav class="nav-bar">
-      <div class="d-flex flex-row justify-content-start align-items-center mb-3">
-        <div class="mw-10" id="weather">
-        </div>
-        <h5 id="temperature"></h5>
+    <nav class="navbar">
+      <div class="container-fluid justify-content-start ailgn items align-items-center">
+        <div class="p-3 m-2 " id="weather"></div>
+        <h5 class="m-2" id="temperature"></h5>
       </div>
     </nav>
-    
+
     <section class="row justify-content-center text-center p-5 mt-4">
-      <div class="card col">
+      <div class="card col-6">
         <div class="card-body">
-          <h4 class="card-title">Preparat per riure? 🤣</h4>
+          <h2 class="card-title m-4">Preparat per riure?</h2>
           <div class="card-text" id="joke"></div>
           <div class="card-row" id="buttons">
-            <button class="btn btn-light" type="submit" onclick="saveScoredJoke(1)">😓</button>
-            <button class="btn btn-light" type="submit" onclick="saveScoredJoke(2)">😐</button>
-            <button class="btn btn-light" type="submit" onclick="saveScoredJoke(3)">🤣</button>
+            <button class="svg-button" type="submit" onclick="saveScoredJoke(1)"><img src="img/emoji-score1.svg"
+                alt="Score 1">
+            </button>
+            <button class="svg-button" type="submit" onclick="saveScoredJoke(2)">
+              <img class="img" src="img/emoji-score2.svg" alt="Score 2">
+            </button>
+            <button class="svg-button" type="submit" onclick="saveScoredJoke(3)">
+              <img src="img/emoji-score3.svg" alt="Score 3">
+            </button>
           </div>
-
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-dark" type="submit" onclick="nextJoke()">next</button>
+          <button class="btn btn-warning" type="submit" onclick="nextJoke()">Següent acudit</button>
         </div>
       </div>
     </section>
-    <script src="data.js"></script>
-    <script src="utils.js"></script>
-    <script src="main.js"></script>
-    <!-- <script>import "bootswatch/dist/sketchy/bootstrap.min.css"</script> -->
-
   </div>
-  <!-- botstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+
+  <script src="data.js"></script>
+  <script src="utils.js"></script>
+  <script src="main.js"></script>
+
 </body>
 
 </html>

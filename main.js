@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var jokeDiv = document.getElementById("joke");
 var weatherDiv = document.getElementById("weather");
 var temperatureDiv = document.getElementById("temperature");
+var blobDiv = document.getElementById("blob");
 var currentJoke = "";
 var currentScore = false;
 var currentObjectJoke;
@@ -78,79 +79,12 @@ function nextJoke() {
     else {
         importNewJoke();
     }
+    changeBlob();
 }
 function printJoke(currentJoke) {
     jokeDiv.innerHTML = `${currentJoke}`;
-    //console.log(reportAcudits);
-}
-function getLocation() {
-    return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((resolve, reject) => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
-                    const lat = position.coords.latitude.toFixed(6);
-                    const lon = position.coords.longitude.toFixed(6);
-                    resolve({ lat, lon });
-                }, (error) => {
-                    reject(new Error("Error getting geolocation " + error.message));
-                });
-            }
-            else {
-                reject(new Error("Geolocation is not supported in this browser"));
-            }
-        });
-    });
-}
-function getComarcaCode() {
-    return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                const location = yield getLocation();
-                const url = `https://api.icgc.cat/territori/comarques/geo/${location.lon}/${location.lat}`;
-                try {
-                    const response = yield fetch(url);
-                    const result = yield response.json();
-                    resolve(result.responses.features[0].properties.CODICOMAR);
-                }
-                catch (error) {
-                    reject(console.error(error));
-                }
-            }
-            catch (error) {
-                reject(console.error(error));
-            }
-        }));
-    });
 }
 function getWheatherInfo() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const url = `https://api.meteo.cat/pronostic/v1/comarcal/${formattedDate}`;
-        const options = {
-            method: "GET",
-            headers: {
-                "X-Api-Key": "Yr8iuFFH0o3xKYjrmkYCYaunCVBdp7k5nIuNiIT",
-            },
-        };
-        try {
-            const response = yield fetch(url, options);
-            const result = yield response.json();
-            const weatherArray = result.mati.cel;
-            const comarca = yield getComarcaCode();
-            const estatCel = weatherArray.filter(element => (element.idComarca === parseInt(comarca)));
-            const estat = estatDelCel.filter(item => item.codi === estatCel[0].simbol);
-            if (weatherDiv) {
-                weatherDiv.innerHTML = `<img src="${estat[0].icona}" alt="Current weather icon" width="50">`;
-            }
-            else {
-                console.error('Image error');
-            }
-        }
-        catch (error) {
-            console.error(error);
-        }
-    });
-}
-function getTemperature() {
     return __awaiter(this, void 0, void 0, function* () {
         const location = yield getLocation();
         const language = navigator.language;
@@ -159,8 +93,15 @@ function getTemperature() {
             const response = yield fetch(url);
             const result = yield response.json();
             const temp = (result.main.temp - 273.15).toFixed(1);
+            const icon = icones.findIndex(item => item.codi === (result.weather[0].icon));
+            if (weatherDiv) {
+                weatherDiv.innerHTML = `<img src="${icones[icon].icona}" alt="Current weather icon" width="50">`;
+            }
+            else {
+                console.error('Image error');
+            }
             if (temperatureDiv) {
-                temperatureDiv.innerHTML = `| ${temp} °C`;
+                temperatureDiv.innerHTML = `|&nbsp &nbsp ${temp} °C`;
             }
         }
         catch (error) {
@@ -168,6 +109,5 @@ function getTemperature() {
         }
     });
 }
-importNewJoke();
 getWheatherInfo();
-getTemperature();
+importNewJoke();

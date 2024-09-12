@@ -1,0 +1,67 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch&display=swap");
+
+body {
+  font-family: "Neucha", sans-serif;
+  background-color: transparent;
+}
+
+h2 {
+  font-family: "Cabin Sketch", cursive;
+}
+
+#blob {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#blob.blob1 {
+  background-image: url("../../img/blob1.svg");
+}
+#blob.blob2 {
+  background-image: url("../../img/blob2.svg");
+}
+#blob.blob3 {
+  background-image: url("../../img/blob3.svg");
+}
+#blob.blob4 {
+  background-image: url("../../img/blob4.svg");
+}
+
+.card {
+  margin-top: 30px;
+  background-color: rgba(255, 255, 255, 0);
+  color: beige;
+  border: 0px;
+  font-size: large;
+  align-content: space-between;
+}
+
+.card-row {
+  justify-content: space-evenly;
+}
+
+#buttons {
+  background-color: rgba(255, 255, 255, 0);
+  stop-color: aqua;
+  margin: 10px;
+  size: 200px;
+}
+
+.btn-warning {
+  border: 1px, solid black;
+  border-radius: 15px;
+  box-shadow: 0.2rem 0.2rem 0 #ffc107;
+}
+
+.svg-button {
+  background-color: transparent;
+  border: 0;
+  margin: 1rem;
+  margin-top: 2rem;
+}
