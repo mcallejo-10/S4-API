@@ -1,5 +1,4 @@
-# S4-API
-# Web de Chistes con TypeScript y API Rest
+# S4-API:  Web de Chistes con TypeScript y API Rest
 
 ## Descripción del proyecto
 
@@ -37,8 +36,7 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/mcallejo-10/.....git
-   cd chistes-project
+   git clone https://github.com/mcallejo-10/S4-API.git
    ```
 
 2. **Instalar las dependencias**:
@@ -59,8 +57,6 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
    npm start
    ```
 
-5. **Probar la API**:
-   Antes de integrarla en el código, las API han sido comprobadas usando **Postman**
 
    
 ## Tecnologías utilizadas
@@ -74,6 +70,8 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
   - [Dad Jokes API](https://icanhazdadjoke.com/)
   - [Chuck Norris Jokes API](https://api.chucknorris.io/)
 - **API meteorológica**: OpenWeatherMap y Meteocat API.
+- **Postman** para testear las APIs antes de ponerlas en el código.
+
 
 
 ## Instrucciones de uso
