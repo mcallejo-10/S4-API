@@ -84,8 +84,3 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
 
 
 ![Captura de pantalla 2024-09-12 a las 16 08 34](https://github.com/user-attachments/assets/90a55860-c387-4735-9ad4-88bf9bc0ccd5)
-
-
-
-
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
