@@ -101,7 +101,7 @@ function getWheatherInfo() {
                 console.error('Image error');
             }
             if (temperatureDiv) {
-                temperatureDiv.innerHTML = `|&nbsp &nbsp ${temp} °C`;
+                temperatureDiv.innerHTML = `| &nbsp ${temp} °C`;
             }
         }
         catch (error) {

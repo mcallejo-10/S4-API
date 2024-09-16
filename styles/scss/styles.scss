@@ -1,46 +1,50 @@
+$warning: #ffe600;
+
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 @import url("https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch&display=swap");
 
 body {
   font-family: "Neucha", sans-serif;
-  background-color: transparent;
+  background-image: url("../../img/blob1.svg");
+  background-repeat: no-repeat;
+  background-position: relative;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+body.blob1 {
+  background-image: url("../../img/blob1.svg");
+}
+body.blob2 {
+  background-image: url("../../img/blob2.svg");
+}
+body.blob3 {
+  background-image: url("../../img/blob3.svg");
+}
+body.blob4 {
+  background-image: url("../../img/blob4.svg");
 }
 
 h2 {
   font-family: "Cabin Sketch", cursive;
 }
 
-#blob {
-  position: absolute;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-#blob.blob1 {
-  background-image: url("../../img/blob1.svg");
-}
-#blob.blob2 {
-  background-image: url("../../img/blob2.svg");
-}
-#blob.blob3 {
-  background-image: url("../../img/blob3.svg");
-}
-#blob.blob4 {
-  background-image: url("../../img/blob4.svg");
-}
-
 .card {
+  position: relative;
   margin-top: 30px;
   background-color: rgba(255, 255, 255, 0);
   color: beige;
   border: 0px;
   font-size: large;
   align-content: space-between;
-  size-adjust:inherit ;
+  z-index: 1;
+  text-shadow:
+  -1px -1px 0 black,  /* Sombra hacia la izquierda y arriba */
+  1px -1px 0 black,   /* Sombra hacia la derecha y arriba */
+  -1px 1px 0 black,   /* Sombra hacia la izquierda y abajo */
+  1px 1px 0 black; 
 }
 
 .card-row {
@@ -51,7 +55,7 @@ h2 {
 .btn-warning {
   border: 1px, solid rgb(0, 0, 0);
   border-radius: 15px;
-  box-shadow: 0.2rem 0.2rem 0 #ffc107;
+  box-shadow: 0.2rem 0.2rem 0 #ffe600;
 }
 
 .svg-button {
