@@ -44,18 +44,8 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
    ```bash
    npm install
    ```
+3. **Abrir el HTML en tu navegador**
 
-3. **Compilar TypeScript**:
-   Compila el proyecto de TypeScript a JavaScript con:
-   ```bash
-   npm run build
-   ```
-
-4. **Ejecutar el proyecto**:
-   Puedes ejecutar el proyecto en un servidor local con:
-   ```bash
-   npm start
-   ```
 
 
    
